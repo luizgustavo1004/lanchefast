@@ -19,6 +19,10 @@ class DatabaseSeeder extends Seeder
             ClienteSeeder::class
         ]);
 
+        $this->call([
+            ProdutoSeeder::class
+        ]);
+
 
     }
 }
