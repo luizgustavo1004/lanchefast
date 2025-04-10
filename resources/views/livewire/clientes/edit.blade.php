@@ -52,6 +52,12 @@
             <button type="submit" class="btn btn-warning w-100">
                 <i class="bi bi-save2 me-2"></i>Salvar Alterações
             </button>
+
+            <div class="mt-4 d-flex justify-content-between">
+                <a href="{{ route('clientes.index') }}" class="btn btn-warning text-white rounded-pill px-4">
+                    <i class="bi bi-arrow-left-circle"></i> Voltar
+                </a>
+            
         </form>
     </div>
 </div>
