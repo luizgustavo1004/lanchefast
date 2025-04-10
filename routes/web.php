@@ -17,6 +17,6 @@ Route::get('/{id}/edit', \App\Livewire\Clientes\Edit::class)->name('clientes.edi
 Route::prefix('produtos')->group(function () {
     Route::get('/', ProdutoIndex::class)->name('produtos.index');
     Route::get('/create', ProdutoCreate::class)->name('produtos.create');
-    Route::get('/{produto}', ProdutoShow::class)->name('produtos.show');
-    Route::get('/{produto}/edit', ProdutoEdit::class)->name('produtos.edit');
+    Route::get('/{id}/show', ProdutoShow::class)->name('produtos.show');
+    Route::get('/{id}/edit', ProdutoEdit::class)->name('produtos.edit');
 });
