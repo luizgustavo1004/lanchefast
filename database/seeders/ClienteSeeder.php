@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Cliente;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -14,32 +15,18 @@ class ClienteSeeder extends Seeder
      */
     public function run(): void
     {
-        Cliente::Create([
-            'nome' => 'Cliente Exemplo',
-            'endereco' => 'Rua Exemplo, 123',
-            'telefone' => '19999999991',
-            'cpf' => '192384192481',
-            'email' => 'cliente@teste.com',
-            'senha' => Hash::make('senha123')
-        ]);
+       $user = User::create([
+    'name' => 'João Cliente',
+    'email' => 'joao@email.com',
+    'password' => bcrypt('123456')
+]);
 
-        Cliente::Create([
-            'nome' => 'Cliente Exemplo2',
-            'endereco' => 'Rua Exemplo, 123',
-            'telefone' => '19999999921',
-            'cpf' => '192384192421',
-            'email' => 'cliente@teste.com2',
-            'senha' => Hash::make('senha123')
-        ]);
-
-        Cliente::Create([
-            'nome' => 'Cliente Exemplo3',
-            'endereco' => 'Rua Exemplo, 123',
-            'telefone' => '19999999942',
-            'cpf' => '192384192402',
-            'email' => 'cliente@teste.com3',
-            'senha' => Hash::make('senha123')
-        ]);
+    Cliente::create([
+    'user_id' => $user->id,
+    'telefone' => '11999999999',
+    'cpf' => '12345678900',
+    'endereco' => 'Rua Exemplo, 123'
+]);
        
     }
 }

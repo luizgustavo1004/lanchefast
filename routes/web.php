@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\Pedido\PedidoCreate;
+use App\Livewire\Pedido\PedidoIndex;
 use App\Livewire\Produto\ProdutoCreate;
 use App\Livewire\Produto\ProdutoEdit;
 use App\Livewire\Produto\ProdutoIndex;
@@ -20,3 +22,7 @@ Route::prefix('produtos')->group(function () {
     Route::get('/{id}/show', ProdutoShow::class)->name('produtos.show');
     Route::get('/{id}/edit', ProdutoEdit::class)->name('produtos.edit');
 });
+
+
+    Route::get('/create/pedidos', PedidoCreate::class)->name('pedido.create');
+    Route::get('/index/pedidos', PedidoIndex::class)->name('pedido.index');

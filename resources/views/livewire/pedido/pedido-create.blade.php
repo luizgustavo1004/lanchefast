@@ -1,24 +1,25 @@
 <div class="container mt-4">
-    <h4>Pedido</h4>
+    <h4>Criar Pedido</h4>
 
     <div class="form-group">
         <label>Produtos</label>
         @foreach($produtosPedido as $index => $item)
             <div class="form-row align-items-end mb-2">
-                <!-- Produto -->
+                <!-- Select para produto -->
                 <div class="col-md-5">
-                    <select wire:model="produtosPedido.{{ $index }}.produto_id" class="form-control">
+                    <select wire:model="produtosPedido.{{ $index }}.produto_id" class="form-control" wire:change="updatedProdutosPedido">
                         <option value="">Selecione um produto</option>
                         @foreach($produtos as $produto)
-                            <option value="{{ $produto->id }}">{{ $produto->nome }} - R$ {{ number_format($produto->valor, 2, ',', '.') }}</option>
+                            <option value="{{ $produto->id }}">
+                                {{ $produto->nome }} - R$ {{ number_format($produto->valor, 2, ',', '.') }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
 
                 <!-- Quantidade -->
                 <div class="col-md-3">
-                    <input type="number" min="1" wire:model="produtosPedido.{{ $index }}.quantidade"
-                        class="form-control" placeholder="Quantidade">
+                    <input type="number" min="1" wire:model="produtosPedido.{{ $index }}.quantidade" class="form-control" wire:change="updatedProdutosPedido" placeholder="Quantidade">
                 </div>
 
                 <!-- Remover -->
@@ -28,9 +29,7 @@
             </div>
         @endforeach
 
-        <button type="button" wire:click="addProduto" class="btn btn-secondary btn-sm mt-2">
-            + Adicionar Produto
-        </button>
+        <button type="button" wire:click="addProduto" class="btn btn-secondary btn-sm mt-2">+ Adicionar Produto</button>
     </div>
 
     <!-- Total -->

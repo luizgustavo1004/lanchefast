@@ -10,6 +10,7 @@ class Cliente extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'nome',
         'endereco',
         'telefone',
@@ -23,8 +24,8 @@ class Cliente extends Model
         'remember_token',
     ];
 
-    public function pedidos()
-    {
-        //return $this->hasMany(Pedido::class); interligação entre as tabelas
-    }
+  
+
+    
 }
+

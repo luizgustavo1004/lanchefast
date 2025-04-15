@@ -3,6 +3,7 @@
 namespace App\Livewire\Clientes;
 
 use App\Models\Cliente;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
@@ -20,13 +21,17 @@ class Create extends Component
     {
        
 
+        $user = User::create([
+            'name' => $this->nome,
+            'email' => $this->email,
+            'password' => Hash::make($this->senha),
+        ]);
+        
         Cliente::create([
-            'nome' => $this->nome,
-            'endereco' => $this->endereco,
+            'user_id' => $user->id,
             'telefone' => $this->telefone,
             'cpf' => $this->cpf,
-            'email' => $this->email,
-            'senha' => Hash::make($this->senha),
+            'endereco' => $this->endereco,
         ]);
 
         
